@@ -330,6 +330,8 @@ class Trainer:
         """Pass a minibatch through the network and generate images and losses
         """
         for key, ipt in inputs.items():
+            if type(ipt) is list:
+                continue
             inputs[key] = ipt.to(self.device)
 
         outputs = {}
