@@ -219,6 +219,10 @@ class MonodepthOptions:
         self.parser.add_argument("--eval_out_dir",
                                  help="if set will output the disparities to this folder",
                                  type=str)
+        self.parser.add_argument("--recon_save_dir",
+                                 help="if set will output the disparities to this folder",
+                                 default="reconstructed_out",
+                                 type=str)
         self.parser.add_argument("--post_process",
                                  help="if set will perform the flipping post processing "
                                       "from the original monodepth paper",
