@@ -184,10 +184,12 @@ class MonodepthOptions:
         # EVALUATION options
         self.parser.add_argument("--eval_stereo",
                                  help="if set evaluates in stereo mode",
-                                 action="store_true")
+                                 type=float,
+                                 default=False)
         self.parser.add_argument("--eval_mono",
                                  help="if set evaluates in mono mode",
-                                 action="store_true")
+                                 type=float,
+                                 default=True)
         self.parser.add_argument("--disable_median_scaling",
                                  help="if set disables median scaling in evaluation",
                                  action="store_true")
