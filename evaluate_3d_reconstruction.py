@@ -106,8 +106,8 @@ def evaluate(opt):
                                         encoder_dict['height'], encoder_dict['width'],
                                         [0], 4, is_train=False)
 
-    save_dir = "reconstruction_scale"
-    os.makedirs(save_dir, exist_ok=True)
+    # save_dir = "reconstruction_scale"
+    os.makedirs(opt.recon_save_dir, exist_ok=True)
     
     dataloader = DataLoader(dataset_recon, 1, shuffle=False, num_workers=opt.num_workers,
                             pin_memory=True, drop_last=False)
@@ -192,10 +192,10 @@ def evaluate(opt):
         pcds.append(pcd)
     print('Saving point clouds...')
     for i, pcd in enumerate(pcds):
-        fn = os.path.join(save_dir, os.path.basename(filepath[i])[:-4] + ".ply")
+        fn = os.path.join(opt.recon_save_dir, os.path.basename(filepath[i])[:-4] + ".ply")
         o3d.io.write_point_cloud(fn, pcd)
     
-    print('Point clouds saved to', save_dir)
+    print('Point clouds saved to', opt.recon_save_dir)
 
 
 if __name__ == "__main__":
