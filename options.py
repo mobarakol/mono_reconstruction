@@ -1,6 +1,5 @@
 from __future__ import absolute_import, division, print_function
 
-import sys
 import os
 import argparse
 
@@ -184,12 +183,10 @@ class MonodepthOptions:
         # EVALUATION options
         self.parser.add_argument("--eval_stereo",
                                  help="if set evaluates in stereo mode",
-                                 type=float,
-                                 default=False)
+                                 action="store_true")
         self.parser.add_argument("--eval_mono",
                                  help="if set evaluates in mono mode",
-                                 type=float,
-                                 default=True)
+                                 action="store_true")
         self.parser.add_argument("--disable_median_scaling",
                                  help="if set disables median scaling in evaluation",
                                  action="store_true")
@@ -232,8 +229,5 @@ class MonodepthOptions:
                                  help="if set saves reconstruction files",
                                  action="store_true")
     def parse(self):
-        if 'ipykernel' in sys.modules:
-            self.options = self.parser.parse_args([])
-        else:
-            self.options = self.parser.parse_args()
+        self.options = self.parser.parse_args()
         return self.options
