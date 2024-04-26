@@ -1,5 +1,6 @@
 from __future__ import absolute_import, division, print_function
 
+import sys
 import os
 import argparse
 
@@ -229,5 +230,8 @@ class MonodepthOptions:
                                  help="if set saves reconstruction files",
                                  action="store_true")
     def parse(self):
-        self.options = self.parser.parse_args()
+        if 'ipykernel' in sys.modules:
+            self.options = self.parser.parse_args([])
+        else:
+            self.options = self.parser.parse_args()
         return self.options
