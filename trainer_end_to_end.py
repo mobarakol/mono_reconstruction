@@ -23,8 +23,8 @@ class Trainer:
         assert self.opt.height % 32 == 0, "'height' must be a multiple of 32"
         assert self.opt.width % 32 == 0, "'width' must be a multiple of 32"
 
-        self.models = {}  # 字典
-        self.parameters_to_train = []  # 列表
+        self.models = {}  # 
+        self.parameters_to_train = []  #
         self.parameters_to_train_0 = []
 
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
