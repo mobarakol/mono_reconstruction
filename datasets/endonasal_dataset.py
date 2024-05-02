@@ -32,7 +32,7 @@ class EndonasalDataset(data.Dataset):
         
         self.filenames = []
         for seq in seqs:
-            frame_path = glob (root + seq + '/*.png')
+            frame_path = glob (os.path.join(root, seq, '*.png'))
             frame_path.sort()
             if len(frame_idxs)>1:
                 frame_path = frame_path[1:-1]
